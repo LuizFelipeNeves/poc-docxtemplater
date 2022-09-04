@@ -1,0 +1,96 @@
+{
+  "DATA":"03 de agosto de 2022",
+  "CIDADE":"Cachoeira Paulista",
+  "LOCADOR": {
+    "NOME": "LEANDRO HUMBERTO MARTINS",
+    "EMAIL":"maiprebros@hotmail.com",
+    "NACIONALIDADE":"brasileiro",
+    "ESTADO_CIVIL":"casado em comunhão parcial de bens",
+    "FUNCAO":"missionário",
+    "RG":"14888814-7 SSP/RJ",
+    "CPF":"5558888",
+    "CONJUGUES": [{
+      "NOME": "VERONICA MARTINS CORREIA",
+      "RG": "55.184.755-5 SSP-PE",
+      "CPF": "000435007-30",
+      "LABELS": {
+        "INSCRITO": "inscrita"
+      }
+    }],
+    "ENDERECO":{
+      "RUA":"Avenida Horácio Rodrigues- 590 - UM 22 BL",
+      "BAIRRO":"Martins de Sá",
+      "CIDADE":"Caraguatatuba",
+      "ESTADO":"SP",
+      "CEP":"11662-400"
+    },
+    "LABELS": {
+      "LOCADOR": "LOCADORES",
+      "INSCRITO": "inscrito",
+      "DOMICILIADO": "domiciliados",
+      "RESIDENTE": "residentes"
+    }
+  },
+  "LOCATARIO":{
+    "NOME":"FERNANDA",
+    "EMAIL":"marxouza@gmail.com",
+    "NACIONALIDADE":"brasileira",
+    "ESTADO_CIVIL":"divorciada",
+    "FUNCAO":"auxiliar administrativo",
+    "RG":"21.99314-7 SSP/RJ",
+    "CPF":"12313",
+    "ENDERECO":{
+      "RUA":"Estrada Friburgo Teresópolis 10515/km10",
+      "BAIRRO":"Campo Coelho",
+      "CIDADE":"Nova Friburgo",
+      "ESTADO":"RJ",
+      "CEP":"28.810-000"
+    },
+    "LABELS": {
+      "LOCATARIO": "LOCATÁRIA",
+      "INSCRITO": "inscrita",
+      "DOMICILIADO": "domiciliada"
+    }
+  },
+  "CORRETOR":{
+    "NOME":"DAGOBERTO",
+    "CPF":"166666"
+  },
+  "IMOVEL":{
+    "CIDADE":"Cachoeira Paulista",
+    "ESTADO":"SP",
+    "CEP":"12630-000",
+    "AREAS":[
+      {
+        "NOME":"Área externa e piso superior",
+        "DESCRICAO":"Portão de entrada com pintura em bom estado de conservação, parte parede da frente sem azulejo e fechadura do portão fechando normalmente.",
+        "IMAGES":[
+          "0.png",
+          "1.png",
+          "2.png",
+          "3.png"
+        ]
+      },
+      {
+        "NOME":"Área de Lazer piso inferior",
+        "DESCRICAO":"Porta de saída para área de lazer com chave, e a pintura a fazer, falta pintura em toda área e partes com manchas do intemperismo, piso do quintal em bom estado de conservação, churrasqueira e fogão a lenha com chapa e completo, todos em bom estado de quintal sujo de matos, ducha a verificar se está funcionando, lâmpadas funcionando, uma antena sky, portão e corre mão, que dá acesso ao quintal enferrujado, escada com marcas do intemperismo e sem pintura.",
+        "IMAGES":[
+          "3.png",
+          "4.png",
+          "5.png"
+        ]
+      }
+    ]
+  },
+  "OBSERVACOES":[
+    {
+      "TEXTO":"Caso haja a necessidade de reparos nas tomadas e luz será informado à administração;"
+    },
+    {
+      "TEXTO":"Dúvidas ou questionamentos que possam surgir deverá ser verificado as imagens feitas durante a vistoria;"
+    },
+    {
+      "TEXTO":"Detalhamento fotográfico disponibilizado neste laudo e em arquivo na imobiliária."
+    }
+  ]
+}

@@ -1,57 +1,46 @@
-const fs = require("fs");
-const DocxTemplater = require("docxtemplater");
-
-const ImageModule = require("docxtemplater-image-module-free");
-const JSZip = require("jszip");
+const { writeFileSync, readFileSync } = require("fs");
+const { TemplateHandler, MimeType } = require('easy-template-x');
 const { join } = require("path");
-
-const opts = {
-  getImage: function (tagValue) {
-    console.log('getImage', tagValue);
-    return fs.readFileSync(join(__dirname, 'images', tagValue));
-  },
-  getSize: function (img, tagValue, tagName) {
-    return [100, 100]
-  }
-};
+const { get, set } = require("lodash");
 
 const generateDoc = async (inputName, outputName, data, options = {}) => {
-  const imageModule = new ImageModule(opts);
-  const content = await fs.readFileSync(inputName);
-
-  const zip = new JSZip(content);
-  const doc = new DocxTemplater(zip, { modules: [imageModule], ...options })
-
   try {
-    await doc.renderAsync(data);
-    const buffer = doc.getZip().generate({
-      type: "nodebuffer",
-      compression: "DEFLATE"
-    });
+    console.log('generating ' + outputName)
+    const templateFile = await readFileSync(inputName);
+    const handler = new TemplateHandler();
 
-    await fs.writeFileSync(outputName, buffer);
+    console.log('processing ' + outputName)
+    const doc = await handler.process(templateFile, data);
+
+    console.log('writing doc ' + outputName)
+    await writeFileSync(outputName, doc);
     console.log("rendered", outputName);
   } catch (error) {
     console.log("An error occured", error);
   }
 }
 
-const _fixImages = (data, prefix) => {
-  return data.reduce((acc, current, index) => {
-    const [imgId] = current.split('.')
-    acc[`${prefix}_${index}`] = current
-    return acc
-  }, {})
-}
-
 const applyImages = (data, imgsPaths) => {
   return imgsPaths.reduce((acc, key) => {
-    const imgsData = _fixImages(data[key], key)
-    const imgStr = Object.keys(imgsData).map(keyPath => `{%${keyPath}}`).join('\n')
-    return Object.assign(acc, {
-      [key]: imgStr,
-      ...imgsData
-    })
+    const imgsData = get(data, key)
+    const newData = imgsData.reduce((acc2, current, index) => {
+      const currentPath = join(__dirname, 'images', current)
+      const sourceImg = readFileSync(currentPath);
+      acc2.push({
+        IMAGE: {
+          _type: "image",
+          source: sourceImg,
+          format: MimeType.Png,
+          width: 200,
+          height: 200
+        }
+      })
+      return acc2
+    }, [])
+
+    set(data, key, newData)
+
+    return acc
   }, data);
 }
 

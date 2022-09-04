@@ -1,20 +1,26 @@
-const { join } = require('path')
-const { applyImages, generateDoc } = require('./utils')
+const {
+  get
+} = require('lodash')
+const {
+  join
+} = require('path')
+const flatten = require('flat')
+const {
+  applyImages,
+  generateDoc
+} = require('./utils')
 
-const extendOptions = { linebreaks: true }
+const initialData = require('./data.json')
 
-const data = applyImages({
-  first_name: "Luiz",
-  last_name: "Neves",
-  phone: "0652455478",
-  description: "New Website",
-  images: ["0.png", "1.png"]
-}, ['images']);
+console.log('loaded data')
 
-console.log(data, extendOptions)
+const paths = get(initialData, 'IMOVEL.AREAS', []).map((_, index) => `IMOVEL.AREAS.[${index}].IMAGES`)
+const data = applyImages(initialData, paths);
 
-generateDoc("template-img.docx", "temp-template.docx", data, extendOptions).then(() => {
-  generateDoc("temp-template.docx", "output.docx", data, extendOptions).then(() => {
-    console.log('done')
-  })
+const fixed = flatten(data, {
+  safe: true
+})
+
+generateDoc("templates/Laudo de vistoria casa.docx", "output.docx", fixed).then(() => {
+  console.log('done')
 })

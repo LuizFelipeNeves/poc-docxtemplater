@@ -10,9 +10,8 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "docxtemplater": "^3.31.3",
-    "docxtemplater-image-module-free": "^1.1.1",
-    "jszip": "^2.7.0",
+    "easy-template-x": "^3.0.2",
+    "flat": "^5.0.2",
     "lodash": "^4.17.21"
   }
 }
